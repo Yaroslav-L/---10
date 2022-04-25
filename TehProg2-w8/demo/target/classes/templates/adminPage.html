@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Администратор</title>
+</head>
+<body style="background-color: #eaffea; ">
+
+<div th:switch="${clients}" style="border-radius: 100px;
+width: max-content;
+height: max-content;
+    margin: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+background-color: white;">
+    <h2 th:case="null">Нет данных</h2>
+    <div th:case="*">
+        <h1 align="center">
+            <form th:action="@{/logout}" method="post">
+                <input class="btn btn-danger" style="border-radius: 50%" type="submit" value="X"/>  <span>Клиенты</span>
+            </form>
+        </h1>
+
+        <br><table class="table">
+            <thead align="center">
+            <tr>
+                <th>ИД</th>
+                <th>ФИО</th>
+                <th>Паспорт</th>
+                <th>Телефон</th>
+            </tr>
+            </thead>
+            <tbody align="center">
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.id_client}"></td>
+                <td th:text="${client.FIO}"></td>
+                <td th:text="${client.Passport}"></td>
+                <td th:text="${client.Phone}"></td>
+                <td><a class="btn btn-primary"  th:href="@{admin/UpdateInfo/{id}(id=${client.id_client})}" role="button">Изменить</a></td>
+                <td><a class="btn btn-primary" th:href="@{admin/DeleteInfo/{id}(id=${client.id_client})}" role="button">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br></div>
+   <p align="center"><a class="btn btn-primary" href="/admin/AddInfo" role="button">Добавить</a></p>
+</div>
+
+</body>
+</html>

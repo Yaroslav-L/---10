@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Пользователь</title>
+</head>
+<body style="background-color: #eaffea; ">
+
+<div th:switch="${hotelRoom}" style="border-radius: 100px;
+    width: max-content;
+    height: max-content;
+    margin: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+background-color: white;">
+    <h2 th:case="null">Нет данных</h2>
+    <div th:case="*">
+
+        <h1 align="center">
+            <form th:action="@{/logout}" method="post">
+                  <input class="btn btn-danger" style="border-radius: 50%" type="submit" value="X"/>  <span>Комнаты отеля</span>
+            </form>
+        </h1>
+
+        <br><table class="table">
+            <thead align="center">
+            <tr>
+                <th>Номер комнаты</th>
+                <th>Этаж</th>
+                <th>Вместимость</th>
+                <th>Цена</th>
+            </tr>
+            </thead>
+            <tbody  align="center">
+            <tr th:each="hotelRoom : ${hotelRoom}">
+                <td th:text="${hotelRoom.Num}"></td>
+                <td th:text="${hotelRoom.Floor}"></td>
+                <td th:text="${hotelRoom.Capacity}"></td>
+                <td th:text="${hotelRoom.Price}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

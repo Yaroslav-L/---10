@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Добавить данные</title>
+</head>
+<body style="background-color: #eaffea; ">
+<form style="border-radius: 100px;
+width: 500px;
+height: max-content;
+    margin: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+background-color: white;" action="#" th:action="@{/admin/AddInfo}" th:object="${client}" method="post">
+
+    <h1 style="text-align: center;">Добавить данные</h1>
+    <br><div class="mb-3">
+    <label class="form-label" for="FIO">ФИО: </label>
+    <input class="form-control" type="text" th:field="*{FIO}" id="FIO" placeholder="ФИО">
+    </div>
+    <br> <div class="mb-3">
+    <label class="form-label" for="Passport">Паспорт :</label>
+    <input class="form-control" type="text" th:field="*{Passport}" id="Passport" placeholder="Паспорт">
+        </div>
+    <br> <div class="mb-3">
+    <label class="form-label" for="Phone">Телефон :</label>
+    <input class="form-control" type="text" th:field="*{Phone}" id="Phone" placeholder="Телефон">
+            </div>
+    <br><div style="text-align: center;">
+    <input class="btn btn-primary" type="submit" value="Добавить">
+    </div>
+</form>
+</body>
+</html>
